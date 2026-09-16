@@ -1,7 +1,7 @@
 // Service worker — Suprême Aluminium Service Plus
 // Cache-first strategy for the static app shell, network-first for navigation.
 
-const CACHE_VERSION = "sap-cache-v1";
+const CACHE_VERSION = "sap-cache-v2";
 const APP_SHELL = ["/", "/index.html", "/manifest.webmanifest", "/icons/icon-192.png", "/icons/icon-512.png"];
 
 self.addEventListener("install", (event) => {

@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { href: "#accueil", label: "Accueil" },
   { href: "#a-propos", label: "À propos" },
   { href: "#services", label: "Services" },
-  { href: "#realisations", label: "Réalisations" },
+  { href: "#/realisations", label: "Réalisations" },
   { href: "#methode", label: "Notre méthode" },
   { href: "#contact", label: "Contact" },
 ];
@@ -44,8 +44,9 @@ export function Navbar({ theme, onToggleTheme }: NavbarProps) {
     <header
       className="fixed inset-x-0 top-0 z-50 transition-all duration-300"
       style={{
-        background: "color-mix(in srgb, var(--bg) 88%, transparent)",
+        background: "var(--header-bg)",
         backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
         borderBottom: "1px solid var(--border)",
       }}
     >

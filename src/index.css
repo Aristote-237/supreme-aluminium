@@ -23,6 +23,7 @@
   --gold: #D4AF37;
   --gold-soft: #E8CE7A;
   --gold-line: rgba(212, 175, 55, 0.35);
+  --header-bg: rgba(7, 12, 27, 0.9);
   --shadow: 0 30px 80px -30px rgba(2, 6, 20, 0.75);
 }
 
@@ -45,11 +46,17 @@
   --gold: #C29A2E;
   --gold-soft: #D4AF37;
   --gold-line: rgba(194, 154, 46, 0.4);
+  --header-bg: rgba(244, 248, 255, 0.9);
   --shadow: 0 30px 60px -30px rgba(14, 36, 57, 0.18);
 }
 
 * {
   border-color: var(--border);
+}
+
+/* Sections anchored below the fixed header keep a breathing room when scrolled into view. */
+[id] {
+  scroll-margin-top: 5.5rem;
 }
 
 html {

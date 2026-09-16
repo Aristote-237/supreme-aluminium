@@ -10,14 +10,18 @@ const SIZE_CLASSES: Record<Project["size"], string> = {
 interface ProjectCardProps {
   project: Project;
   onOpen: (project: Project) => void;
+  /** Force a uniform 4/3 aspect ratio regardless of the project's size (gallery page). */
+  uniform?: boolean;
 }
 
-export function ProjectCard({ project, onOpen }: ProjectCardProps) {
+export function ProjectCard({ project, onOpen, uniform = false }: ProjectCardProps) {
   return (
     <button
       type="button"
       onClick={() => onOpen(project)}
-      className={`group relative overflow-hidden rounded-2xl border text-left ${SIZE_CLASSES[project.size]}`}
+      className={`group relative overflow-hidden rounded-2xl border text-left ${
+        uniform ? "aspect-[4/3]" : SIZE_CLASSES[project.size]
+      }`}
       style={{ borderColor: "var(--border)" }}
     >
       <img

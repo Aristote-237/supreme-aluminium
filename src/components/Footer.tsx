@@ -31,7 +31,7 @@ export function Footer() {
               <li><a href="#accueil">Accueil</a></li>
               <li><a href="#a-propos">À propos</a></li>
               <li><a href="#services">Services</a></li>
-              <li><a href="#realisations">Réalisations</a></li>
+              <li><a href="#/realisations">Réalisations</a></li>
               <li><a href="#methode">Notre méthode</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>

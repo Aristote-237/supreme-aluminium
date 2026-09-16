@@ -73,7 +73,7 @@ export function Hero() {
             className="mt-8 flex flex-col gap-3 sm:flex-row"
           >
             <a
-              href="#realisations"
+              href="#/realisations"
               className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-transform duration-300 hover:scale-[1.02]"
               style={{ background: "var(--gold)", color: "var(--blue-deep)" }}
             >
