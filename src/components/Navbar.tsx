@@ -61,9 +61,12 @@ export function Navbar({ theme, onToggleTheme }: NavbarProps) {
             alt="Suprême Aluminium Service Plus"
             className={`w-auto object-contain transition-all duration-300 ${isScrolled ? "h-9" : "h-11"}`}
           />
-          <span className="font-display hidden text-sm leading-tight tracking-wide sm:block" style={{ color: "var(--text)" }}>
+          <span
+            className="font-display text-xs leading-tight tracking-wide sm:text-sm"
+            style={{ color: "var(--text)" }}
+          >
             SUPRÊME ALUMINIUM
-            <span className="block text-[0.65rem] font-medium tracking-[0.2em]" style={{ color: "var(--gold)" }}>
+            <span className="hidden text-[0.65rem] font-medium tracking-[0.2em] sm:block" style={{ color: "var(--gold)" }}>
               SERVICE PLUS
             </span>
           </span>
