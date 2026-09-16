@@ -41,76 +41,92 @@ export function Navbar({ theme, onToggleTheme }: NavbarProps) {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header
-      className="fixed inset-x-0 top-0 z-50 transition-all duration-300"
-      style={{
-        background: "var(--header-bg)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
-        borderBottom: "1px solid var(--border)",
-      }}
-    >
-      <div
-        className={`mx-auto flex max-w-7xl items-center justify-between px-5 transition-all duration-300 sm:px-8 ${
-          isScrolled ? "py-2.5" : "py-4"
-        }`}
+    <>
+      <header
+        className="fixed inset-x-0 top-0 z-50 transition-all duration-300"
+        style={{
+          background: "var(--header-bg)",
+          backdropFilter: "blur(14px)",
+          WebkitBackdropFilter: "blur(14px)",
+          borderBottom: "1px solid var(--border)",
+        }}
       >
-        <a href="#accueil" className="flex items-center gap-3" onClick={closeMenu}>
-          <img
-            src={logo}
-            alt="Suprême Aluminium Service Plus"
-            className={`w-auto object-contain transition-all duration-300 ${isScrolled ? "h-9" : "h-11"}`}
-          />
-          <span
-            className="font-display text-xs leading-tight tracking-wide sm:text-sm"
-            style={{ color: "var(--text)" }}
-          >
-            SUPRÊME ALUMINIUM
-            <span className="hidden text-[0.65rem] font-medium tracking-[0.2em] sm:block" style={{ color: "var(--gold)" }}>
-              SERVICE PLUS
-            </span>
-          </span>
-        </a>
-
-        <nav className="hidden items-center gap-8 lg:flex">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium tracking-wide transition-colors duration-200"
-              style={{ color: "var(--text-muted)" }}
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="hidden items-center gap-3 lg:flex">
-          <WhatsAppButton variant="inline" label="WhatsApp" className="px-4 py-2 text-xs" />
-          <ThemeToggle theme={theme} onToggle={onToggleTheme} />
-          <InstallAppButton compact />
-        </div>
-
-        {/* Visible theme control on mobile so the header stays useful on small screens */}
-        <div className="flex items-center gap-2 lg:hidden">
-          <ThemeToggle theme={theme} onToggle={onToggleTheme} />
-        </div>
-
-        <button
-          type="button"
-          aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-          aria-expanded={isMenuOpen}
-          onClick={() => setIsMenuOpen((open) => !open)}
-          className="flex h-10 w-10 items-center justify-center rounded-full border lg:hidden"
-          style={{ borderColor: "var(--border)", color: "var(--text)" }}
+        <div
+          className={`mx-auto flex max-w-7xl items-center justify-between px-5 transition-all duration-300 sm:px-8 ${
+            isScrolled ? "py-2.5" : "py-4"
+          }`}
         >
-          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </div>
+          <a href="#accueil" className="flex min-w-0 items-center gap-3" onClick={closeMenu}>
+            <img
+              src={logo}
+              alt="Suprême Aluminium Service Plus"
+              className={`w-auto shrink-0 object-contain transition-all duration-300 ${isScrolled ? "h-9" : "h-11"}`}
+            />
+            <span
+              className="font-display min-w-0 truncate text-xs leading-tight tracking-wide sm:text-sm"
+              style={{
+                background: "linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 55%, var(--gold) 100%)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              SUPRÊME ALUMINIUM
+              <span
+                className="hidden text-[0.65rem] font-medium tracking-[0.2em] sm:block"
+                style={{ color: "var(--gold)", WebkitTextFillColor: "var(--gold)" }}
+              >
+                SERVICE PLUS
+              </span>
+            </span>
+          </a>
 
+          <nav className="hidden items-center gap-8 lg:flex">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium tracking-wide transition-colors duration-200"
+                style={{ color: "var(--text-muted)" }}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden items-center gap-3 lg:flex">
+            <WhatsAppButton variant="inline" label="WhatsApp" className="px-4 py-2 text-xs" />
+            <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+            <InstallAppButton compact />
+          </div>
+
+          {/* Visible theme control on mobile so the header stays useful on small screens */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+          </div>
+
+          <button
+            type="button"
+            aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((open) => !open)}
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border lg:hidden"
+            style={{ borderColor: "var(--border)", color: "var(--text)" }}
+          >
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </header>
+
+      {/*
+        Mobile menu rendered OUTSIDE the <header> on purpose: the header's
+        backdrop-filter makes it the containing block for `position: fixed`
+        descendants, which would break the full-screen overlay positioning.
+      */}
       {isMenuOpen && (
         <div
-          className="fixed inset-0 top-[var(--nav-h,64px)] z-40 flex flex-col gap-1 overflow-y-auto px-6 pb-10 pt-6 lg:hidden"
+          className="fixed inset-0 top-0 z-40 flex flex-col gap-1 overflow-y-auto px-6 pb-10 pt-6 lg:hidden"
           style={{ background: "var(--bg)", top: isScrolled ? "60px" : "72px" }}
         >
           {NAV_LINKS.map((link) => (
@@ -134,6 +150,6 @@ export function Navbar({ theme, onToggleTheme }: NavbarProps) {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }
