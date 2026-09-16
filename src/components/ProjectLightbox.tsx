@@ -1,17 +1,23 @@
 import { useEffect } from "react";
-import { X, MapPin } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, MapPin } from "lucide-react";
 import type { Project } from "../data/projects";
 
 interface ProjectLightboxProps {
   project: Project | null;
+  index?: number;
+  total?: number;
   onClose: () => void;
+  onPrev?: () => void;
+  onNext?: () => void;
 }
 
-export function ProjectLightbox({ project, onClose }: ProjectLightboxProps) {
+export function ProjectLightbox({ project, index = 0, total = 1, onClose, onPrev, onNext }: ProjectLightboxProps) {
   useEffect(() => {
     if (!project) return;
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
+      if (event.key === "ArrowLeft") onPrev?.();
+      if (event.key === "ArrowRight") onNext?.();
     };
     document.addEventListener("keydown", handleKeyDown);
     document.body.style.overflow = "hidden";
@@ -19,9 +25,12 @@ export function ProjectLightbox({ project, onClose }: ProjectLightboxProps) {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [project, onClose]);
+  }, [project, onClose, onPrev, onNext]);
 
   if (!project) return null;
+
+  const hasPrev = Boolean(onPrev) && total > 1;
+  const hasNext = Boolean(onNext) && total > 1;
 
   return (
     <div
@@ -36,8 +45,31 @@ export function ProjectLightbox({ project, onClose }: ProjectLightboxProps) {
         style={{ background: "var(--bg-raised)", borderColor: "var(--border-strong)" }}
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="max-h-[60vh] overflow-hidden md:max-h-[80vh]">
+        <div className="relative max-h-[60vh] overflow-hidden md:max-h-[80vh]">
           <img src={project.image} alt={project.title} className="h-full w-full object-cover" />
+
+          {hasPrev && (
+            <button
+              type="button"
+              onClick={onPrev}
+              aria-label="Image précédente"
+              className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border bg-black/45 text-white/90 transition-colors hover:bg-black/70"
+              style={{ borderColor: "rgba(255,255,255,0.2)" }}
+            >
+              <ChevronLeft size={22} />
+            </button>
+          )}
+          {hasNext && (
+            <button
+              type="button"
+              onClick={onNext}
+              aria-label="Image suivante"
+              className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border bg-black/45 text-white/90 transition-colors hover:bg-black/70"
+              style={{ borderColor: "rgba(255,255,255,0.2)" }}
+            >
+              <ChevronRight size={22} />
+            </button>
+          )}
         </div>
 
         <div className="relative flex flex-col p-6 sm:p-8">
@@ -51,12 +83,19 @@ export function ProjectLightbox({ project, onClose }: ProjectLightboxProps) {
             <X size={18} />
           </button>
 
-          <span
-            className="w-fit rounded-full px-3 py-1 text-xs font-semibold tracking-wide"
-            style={{ background: "var(--surface)", color: "var(--gold)" }}
-          >
-            {project.category}
-          </span>
+          <div className="flex flex-wrap items-center gap-2">
+            <span
+              className="w-fit rounded-full px-3 py-1 text-xs font-semibold tracking-wide"
+              style={{ background: "var(--surface)", color: "var(--gold)" }}
+            >
+              {project.category}
+            </span>
+            {total > 1 && (
+              <span className="rounded-full border px-3 py-1 text-xs font-semibold tracking-wide" style={{ borderColor: "var(--border)", color: "var(--text-faint)" }}>
+                {index + 1} / {total}
+              </span>
+            )}
+          </div>
 
           <h3 className="font-display mt-4 text-2xl" style={{ color: "var(--text)" }}>
             {project.title}

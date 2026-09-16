@@ -33,8 +33,13 @@ export function StatCounter({ value, suffix = "", label, isNumeric = true, displ
   }, [isVisible, isNumeric, value]);
 
   return (
-    <div ref={ref} className="text-center sm:text-left">
-      <p className="font-display text-4xl sm:text-5xl" style={{ color: "var(--gold)" }}>
+    <div ref={ref} className="min-w-0 text-center sm:text-left">
+      <p
+        className={`font-display leading-tight ${
+          isNumeric ? "text-4xl sm:text-5xl" : "text-lg sm:text-3xl"
+        }`}
+        style={{ color: "var(--gold)" }}
+      >
         {isNumeric ? String(count).padStart(String(value).length, "0") : displayValue}
         {isNumeric && suffix}
       </p>

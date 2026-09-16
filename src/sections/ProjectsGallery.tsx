@@ -9,12 +9,28 @@ type FilterValue = "Tous" | ProjectCategory;
 export function ProjectsGallery() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
   const [activeFilter, setActiveFilter] = useState<FilterValue>("Tous");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const filteredProjects = useMemo(() => {
     if (activeFilter === "Tous") return projects;
     return projects.filter((project) => project.category === activeFilter);
   }, [activeFilter]);
+
+  const selectedProject =
+    selectedIndex !== null && filteredProjects.length > 0 ? filteredProjects[selectedIndex] : null;
+
+  const openProject = (project: Project) => {
+    const index = filteredProjects.findIndex((p) => p.id === project.id);
+    setSelectedIndex(index >= 0 ? index : 0);
+  };
+
+  const stepProject = (delta: number) => {
+    if (filteredProjects.length <= 1) return;
+    setSelectedIndex((current) => {
+      if (current === null) return current;
+      return (current + delta + filteredProjects.length) % filteredProjects.length;
+    });
+  };
 
   const filters: FilterValue[] = ["Tous", ...projectCategories];
 
@@ -56,12 +72,19 @@ export function ProjectsGallery() {
 
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:auto-rows-[220px]">
           {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} onOpen={setSelectedProject} />
+            <ProjectCard key={project.id} project={project} onOpen={openProject} />
           ))}
         </div>
       </div>
 
-      <ProjectLightbox project={selectedProject} onClose={() => setSelectedProject(null)} />
+      <ProjectLightbox
+        project={selectedProject}
+        index={selectedIndex ?? 0}
+        total={filteredProjects.length}
+        onClose={() => setSelectedIndex(null)}
+        onPrev={() => stepProject(-1)}
+        onNext={() => stepProject(1)}
+      />
     </section>
   );
 }

@@ -35,7 +35,7 @@ export function WhatsAppButton({ variant = "floating", label, message, className
       target="_blank"
       rel="noreferrer"
       aria-label="Contacter Suprême Aluminium sur WhatsApp"
-      className={`whatsapp-fab fixed bottom-6 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full shadow-lg sm:bottom-8 sm:right-8 ${className}`}
+      className={`whatsapp-fab fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] right-[max(1.25rem,env(safe-area-inset-right))] z-40 flex h-14 w-14 items-center justify-center rounded-full shadow-lg sm:bottom-8 sm:right-8 ${className}`}
       style={{ background: "#25D366", color: "#08331B" }}
     >
       <span className="whatsapp-pulse absolute inset-0 rounded-full" />

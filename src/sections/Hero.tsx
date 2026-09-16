@@ -44,7 +44,7 @@ export function Hero() {
             animate="visible"
             custom={0.12}
             variants={fadeUp}
-            className="font-display mt-5 text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[4rem]"
+            className="font-display mt-5 text-[1.8rem] leading-[1.08] sm:text-6xl lg:text-[4rem]"
             style={{ color: "var(--text)" }}
           >
             Suprême Aluminium
@@ -77,7 +77,7 @@ export function Hero() {
               className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-transform duration-300 hover:scale-[1.02]"
               style={{ background: "var(--gold)", color: "var(--blue-deep)" }}
             >
-              Voir nos réalisations
+              Explorer nos réalisations
               <ArrowRight size={16} />
             </a>
             <a

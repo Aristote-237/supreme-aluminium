@@ -3,6 +3,7 @@ import { BackgroundOrbs } from "./components/BackgroundOrbs";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { WhatsAppButton } from "./components/WhatsAppButton";
+import { InstallAppButton } from "./components/InstallAppButton";
 import { Hero } from "./sections/Hero";
 import { AboutSection } from "./sections/AboutSection";
 import { ServicesSection } from "./sections/ServicesSection";
@@ -33,6 +34,8 @@ function App() {
 
       <Footer />
       <WhatsAppButton />
+      {/* Floating "Installer l'app" button — visible on mobile only (the header is hidden on mobile). */}
+      <InstallAppButton floating className="lg:hidden" />
     </div>
   );
 }
