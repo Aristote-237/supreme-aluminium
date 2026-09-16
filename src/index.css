@@ -30,8 +30,9 @@
 :root[data-theme="light"] {
   color-scheme: light;
 
-  /* Light palette adapted from the zekeng-max.vercel.app reference:
-     very light blue background, white elevated surfaces, deep navy text. */
+  /* Light theme based on the zekeng-max.vercel.app reference:
+     very light blue background, white elevated surfaces, deep navy text,
+     blue/teal accents (reference: accent #0d6adf, secondary #00a88f). */
   --bg: #F4F8FF;
   --bg-raised: #FFFFFF;
   --surface: #E9F1FF;
@@ -41,13 +42,13 @@
   --text: #0E2439;
   --text-muted: #34516D;
   --text-faint: #7C8CA6;
-  --blue: #0F2B63;
-  --blue-deep: #0E2439;
-  --gold: #C29A2E;
-  --gold-soft: #D4AF37;
-  --gold-line: rgba(194, 154, 46, 0.4);
+  --blue: #0d6adf;
+  --blue-deep: #ffffff;
+  --gold: #0d6adf;
+  --gold-soft: #00a88f;
+  --gold-line: rgba(13, 106, 223, 0.3);
   --header-bg: rgba(244, 248, 255, 0.9);
-  --shadow: 0 30px 60px -30px rgba(14, 36, 57, 0.18);
+  --shadow: 0 30px 60px -30px rgba(13, 42, 89, 0.25);
 }
 
 * {

@@ -91,7 +91,6 @@ export function Navbar({ theme, onToggleTheme }: NavbarProps) {
         {/* Visible theme control on mobile so the header stays useful on small screens */}
         <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle theme={theme} onToggle={onToggleTheme} />
-          <InstallAppButton compact />
         </div>
 
         <button

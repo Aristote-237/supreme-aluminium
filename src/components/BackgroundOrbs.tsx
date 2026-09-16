@@ -1,5 +1,7 @@
 /**
- * Fixed, decorative circular shapes that drift slowly behind the page content.
+ * Fixed, decorative background circles inspired by the reference site's filled
+ * motifs: exactly three filled circles, each slowly oscillating in place so the
+ * backdrop feels alive without ever covering the content.
  * Colors are driven entirely by CSS variables so they adapt to the active theme.
  * All motion is disabled automatically when the user has requested reduced motion.
  */
@@ -9,51 +11,33 @@ export function BackgroundOrbs() {
       <div className="orb orb-a absolute -left-32 -top-24 h-[26rem] w-[26rem] rounded-full" />
       <div className="orb orb-b absolute -right-40 top-1/3 h-[32rem] w-[32rem] rounded-full" />
       <div className="orb orb-c absolute -bottom-40 left-1/4 h-[22rem] w-[22rem] rounded-full" />
-      <div className="ring-shape absolute right-[8%] top-[12%] h-64 w-64 rounded-full" />
-      <div className="ring-shape ring-shape-slow absolute left-[6%] bottom-[18%] h-40 w-40 rounded-full" />
 
       <style>{`
+        /* Three filled circles with a soft gradient, slowly oscillating. */
         .orb {
-          background: radial-gradient(circle at 30% 30%, var(--gold) 0%, transparent 60%);
-          opacity: 0.08;
-          filter: blur(10px);
-          animation: orb-drift 40s ease-in-out infinite;
-        }
-        .orb-a { background: radial-gradient(circle at 30% 30%, var(--blue) 0%, transparent 65%); opacity: 0.5; animation-duration: 46s; }
-        .orb-b { background: radial-gradient(circle at 40% 40%, var(--gold) 0%, transparent 70%); opacity: 0.07; animation-duration: 54s; animation-direction: reverse; }
-        .orb-c { background: radial-gradient(circle at 50% 50%, var(--blue) 0%, transparent 65%); opacity: 0.45; animation-duration: 60s; }
-
-        /* Filled decorative circles (inspired by the reference site's filled motifs),
-           with a soft blur so they sit quietly behind the content. */
-        .ring-shape {
-          border: 1px solid var(--gold-line);
-          opacity: 0.35;
+          border-radius: 999px;
           background:
-            radial-gradient(circle at 32% 30%, var(--blue) 0%, transparent 64%),
-            radial-gradient(circle at 70% 76%, var(--gold) 0%, transparent 52%);
-          filter: blur(2px);
-          animation: orb-pulse 12s ease-in-out infinite;
+            radial-gradient(circle at 32% 30%, var(--blue) 0%, transparent 62%),
+            radial-gradient(circle at 70% 76%, var(--gold) 0%, transparent 55%);
+          opacity: 0.3;
+          filter: blur(3px);
+          animation: orb-oscillate 16s ease-in-out infinite;
         }
-        .ring-shape-slow { animation-duration: 18s; animation-delay: 2s; }
+        .orb-a { animation-duration: 15s; }
+        .orb-b { animation-duration: 21s; animation-delay: -6s; }
+        .orb-c { animation-duration: 18s; animation-delay: -11s; }
 
-        @keyframes orb-drift {
+        @keyframes orb-oscillate {
           0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-          50% { transform: translate3d(2%, -3%, 0) scale(1.06); }
-        }
-        @keyframes orb-pulse {
-          0%, 100% { transform: scale(1); opacity: 0.3; }
-          50% { transform: scale(1.08); opacity: 0.5; }
+          50% { transform: translate3d(1%, 1.5%, 0) scale(1.05); }
         }
 
-        /* Mobile: fewer circles, no circle animations (perf + calmer layout). */
         @media (max-width: 767px) {
-          .orb, .ring-shape { animation: none !important; }
-          .orb-b, .ring-shape-slow { display: none; }
-          .ring-shape { filter: none; }
+          .orb { opacity: 0.22; }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .orb, .ring-shape { animation: none !important; }
+          .orb { animation: none !important; }
         }
       `}</style>
     </div>
