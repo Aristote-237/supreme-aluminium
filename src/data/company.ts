@@ -16,7 +16,7 @@ export const company = {
     sunday: "Dimanche : 08h00 – 14h00",
   },
   social: {
-    facebook: { label: "Suprême Aluminium", url: "" },
-    tiktok: { label: "Service Plus237", url: "" },
+    facebook: { label: "Suprême Aluminium", url: "https://www.facebook.com/profile.php?id=100094043751302" },
+    tiktok: { label: "Service Plus237", url: "https://www.tiktok.com/@service.plus237" },
   },
 } as const;

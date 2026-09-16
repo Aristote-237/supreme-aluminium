@@ -1,7 +1,8 @@
-import { Globe, Music2, Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import logo from "../assets/logo/logo.jpg";
 import { company } from "../data/company";
 import { services } from "../data/services";
+import { SocialLinks } from "./SocialLinks";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -74,21 +75,11 @@ export function Footer() {
               </li>
             </ul>
 
-            <div className="mt-5 flex items-center gap-3">
-              <span
-                className="flex h-9 w-9 items-center justify-center rounded-full border"
-                style={{ borderColor: "var(--border)", color: "var(--text-muted)" }}
-                title={company.social.facebook.label}
-              >
-                <Globe size={16} />
-              </span>
-              <span
-                className="flex h-9 w-9 items-center justify-center rounded-full border"
-                style={{ borderColor: "var(--border)", color: "var(--text-muted)" }}
-                title={company.social.tiktok.label}
-              >
-                <Music2 size={16} />
-              </span>
+            <div className="mt-6">
+              <p className="text-xs font-semibold tracking-wide" style={{ color: "var(--text-faint)" }}>
+                SUIVEZ-NOUS
+              </p>
+              <SocialLinks className="mt-3" />
             </div>
           </div>
         </div>

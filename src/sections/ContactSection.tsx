@@ -2,6 +2,7 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { company } from "../data/company";
 import { QuoteForm } from "../components/QuoteForm";
 import { WhatsAppButton } from "../components/WhatsAppButton";
+import { SocialLinks } from "../components/SocialLinks";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const contactItems = [
@@ -74,6 +75,13 @@ export function ContactSection() {
 
             <div className="mt-8">
               <WhatsAppButton variant="inline" label="Discuter directement sur WhatsApp" />
+            </div>
+
+            <div className="mt-8">
+              <p className="text-xs font-semibold tracking-wide" style={{ color: "var(--text-faint)" }}>
+                SUIVEZ-NOUS SUR LES RÉSEAUX
+              </p>
+              <SocialLinks className="mt-3" />
             </div>
           </div>
 

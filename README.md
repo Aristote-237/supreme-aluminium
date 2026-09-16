@@ -33,9 +33,9 @@ public/
 
 ## Points à personnaliser avant mise en ligne
 
-- **Réseaux sociaux** — les URLs Facebook (« Suprême Aluminium ») et TikTok (« Service Plus237 ») ne sont
-  pas encore connues : voir `src/data/company.ts` (`social.facebook.url`, `social.tiktok.url`). Une fois
-  connues, ajoutez les liens dans `Footer.tsx`.
+- **Réseaux sociaux** — les URLs Facebook (« Suprême Aluminium ») et TikTok (« Service Plus237 ») sont
+  renseignées dans `src/data/company.ts` (`social.facebook.url`, `social.tiktok.url`) et affichées en
+  liens cliquables dans `Footer.tsx` (ouverture dans un nouvel onglet).
 - **Témoignages** — la section clients affiche volontairement un appel à avis plutôt que de faux
   témoignages (`src/sections/TestimonialsSection.tsx`). À remplacer par de vrais avis quand ils seront
   disponibles.
