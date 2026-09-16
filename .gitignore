@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -141,3 +142,10 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+=======
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+>>>>>>> 2e7ad0b (tout premier commit du sitre vitrine de supreme-aluminium)

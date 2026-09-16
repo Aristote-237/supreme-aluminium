@@ -1,0 +1,32 @@
+{
+  "name": "Suprême Aluminium Service Plus",
+  "short_name": "Suprême Alu",
+  "description": "Menuiserie aluminium, vitrerie générale et travaux en aluminium & inox sur mesure à Douala, Cameroun.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#060B18",
+  "theme_color": "#060B18",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
