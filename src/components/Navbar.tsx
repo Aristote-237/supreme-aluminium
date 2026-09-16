@@ -42,7 +42,7 @@ export function Navbar({ theme, onToggleTheme }: NavbarProps) {
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50 transition-all duration-300"
+      className="fixed inset-x-0 top-0 z-50 hidden transition-all duration-300 lg:block"
       style={{
         background: isScrolled ? "color-mix(in srgb, var(--bg) 88%, transparent)" : "transparent",
         backdropFilter: isScrolled ? "blur(14px)" : "none",
