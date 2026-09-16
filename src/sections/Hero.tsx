@@ -22,7 +22,7 @@ const infoBadges = [
 
 export function Hero() {
   return (
-    <section id="accueil" className="relative flex min-h-[100svh] items-center overflow-hidden pt-16 pb-16 lg:pt-32">
+    <section id="accueil" className="relative flex min-h-[100svh] items-center overflow-hidden pt-28 pb-16 sm:pt-32">
       {/* Mobile & tablet only: slow looping photo background behind the hero content. */}
       <HeroSlideshow className="absolute inset-0 -z-10 lg:hidden" />
 

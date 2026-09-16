@@ -42,11 +42,11 @@ export function Navbar({ theme, onToggleTheme }: NavbarProps) {
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50 hidden transition-all duration-300 lg:block"
+      className="fixed inset-x-0 top-0 z-50 transition-all duration-300"
       style={{
-        background: isScrolled ? "color-mix(in srgb, var(--bg) 88%, transparent)" : "transparent",
-        backdropFilter: isScrolled ? "blur(14px)" : "none",
-        borderBottom: isScrolled ? "1px solid var(--border)" : "1px solid transparent",
+        background: "color-mix(in srgb, var(--bg) 88%, transparent)",
+        backdropFilter: "blur(14px)",
+        borderBottom: "1px solid var(--border)",
       }}
     >
       <div
@@ -83,6 +83,12 @@ export function Navbar({ theme, onToggleTheme }: NavbarProps) {
 
         <div className="hidden items-center gap-3 lg:flex">
           <WhatsAppButton variant="inline" label="WhatsApp" className="px-4 py-2 text-xs" />
+          <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+          <InstallAppButton compact />
+        </div>
+
+        {/* Visible theme control on mobile so the header stays useful on small screens */}
+        <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle theme={theme} onToggle={onToggleTheme} />
           <InstallAppButton compact />
         </div>

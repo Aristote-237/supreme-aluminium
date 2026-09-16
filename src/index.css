@@ -29,22 +29,23 @@
 :root[data-theme="light"] {
   color-scheme: light;
 
-  /* Light Design */
-  --bg: #FBFAF6;
+  /* Light palette adapted from the zekeng-max.vercel.app reference:
+     very light blue background, white elevated surfaces, deep navy text. */
+  --bg: #F4F8FF;
   --bg-raised: #FFFFFF;
-  --surface: #F3F2ED;
-  --surface-2: #EDEBE2;
-  --border: rgba(15, 43, 99, 0.1);
-  --border-strong: rgba(15, 43, 99, 0.18);
-  --text: #0C1B3E;
-  --text-muted: #4A567A;
-  --text-faint: #8189A4;
+  --surface: #E9F1FF;
+  --surface-2: #DFEAFA;
+  --border: rgba(13, 42, 89, 0.12);
+  --border-strong: rgba(13, 42, 89, 0.22);
+  --text: #0E2439;
+  --text-muted: #34516D;
+  --text-faint: #7C8CA6;
   --blue: #0F2B63;
-  --blue-deep: #0F2B63;
-  --gold: #B4892F;
-  --gold-soft: #C9A227;
-  --gold-line: rgba(180, 137, 47, 0.4);
-  --shadow: 0 30px 60px -30px rgba(15, 30, 70, 0.18);
+  --blue-deep: #0E2439;
+  --gold: #C29A2E;
+  --gold-soft: #D4AF37;
+  --gold-line: rgba(194, 154, 46, 0.4);
+  --shadow: 0 30px 60px -30px rgba(14, 36, 57, 0.18);
 }
 
 * {

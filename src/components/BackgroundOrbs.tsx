@@ -23,9 +23,15 @@ export function BackgroundOrbs() {
         .orb-b { background: radial-gradient(circle at 40% 40%, var(--gold) 0%, transparent 70%); opacity: 0.07; animation-duration: 54s; animation-direction: reverse; }
         .orb-c { background: radial-gradient(circle at 50% 50%, var(--blue) 0%, transparent 65%); opacity: 0.45; animation-duration: 60s; }
 
+        /* Filled decorative circles (inspired by the reference site's filled motifs),
+           with a soft blur so they sit quietly behind the content. */
         .ring-shape {
           border: 1px solid var(--gold-line);
           opacity: 0.35;
+          background:
+            radial-gradient(circle at 32% 30%, var(--blue) 0%, transparent 64%),
+            radial-gradient(circle at 70% 76%, var(--gold) 0%, transparent 52%);
+          filter: blur(2px);
           animation: orb-pulse 12s ease-in-out infinite;
         }
         .ring-shape-slow { animation-duration: 18s; animation-delay: 2s; }
@@ -37,6 +43,13 @@ export function BackgroundOrbs() {
         @keyframes orb-pulse {
           0%, 100% { transform: scale(1); opacity: 0.3; }
           50% { transform: scale(1.08); opacity: 0.5; }
+        }
+
+        /* Mobile: fewer circles, no circle animations (perf + calmer layout). */
+        @media (max-width: 767px) {
+          .orb, .ring-shape { animation: none !important; }
+          .orb-b, .ring-shape-slow { display: none; }
+          .ring-shape { filter: none; }
         }
 
         @media (prefers-reduced-motion: reduce) {
